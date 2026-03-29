@@ -14,7 +14,8 @@ public class BaseTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000; // default 4000
+//        Configuration.timeout = 10000; // default 4000
+//        Configuration.holdBrowserOpen = true;
     }
 
     @AfterEach

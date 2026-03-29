@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests extends BaseTest{
@@ -20,7 +21,22 @@ public class TextBoxTests extends BaseTest{
         $("[id=output] [id=email]").shouldHave(text("alex@black.com"));
         $("[id=output] [id=currentAddress]").shouldHave(text("first address 1"));
         $("[id=output] [id=permanentAddress]").shouldHave(text("second address 2"));
-
     }
 
+    @Test
+    void negativeFillFormTest() {
+        open("/text-box");
+        $("[id=userEmail]").setValue("123");
+        $("[id=submit]").click();
+        $(".field-error").shouldHave(visible);
+    }
+
+    @Test
+    void miniFieldTest() {
+        open("/text-box");
+        $("[id=userName]").setValue("Aaron");
+        $("[id=submit]").click();
+
+        $("[id=output] [id=name]").shouldHave(text("Aaron"));
+    }
 }
