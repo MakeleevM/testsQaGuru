@@ -30,5 +30,7 @@ public class JUnit5ExamplesTest {
     void secondTest () {
         System.out.println("secondTest");
         System.out.println("HELLO MY FRIENDS");
+        System.out.println("Create new branch");
+        System.out.println("!!!!!!!!!!!!!!!");
     }
 }
