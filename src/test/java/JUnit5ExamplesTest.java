@@ -29,5 +29,6 @@ public class JUnit5ExamplesTest {
     @Test
     void secondTest () {
         System.out.println("secondTest");
+        System.out.println("HELLO MY FRIENDS");
     }
 }
