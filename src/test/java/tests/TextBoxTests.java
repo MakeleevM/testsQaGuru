@@ -5,13 +5,23 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+import static testdata.TestData.*;
 
 public class TextBoxTests extends BaseTest {
-
-    String userName = "Alex Black";
-    String userEmail = "alex@black.com";
-    String currentAddress = "first address 1";
-    String permanentAddress = "second address 2";
+//
+//    String userName;
+//    String userEmail;
+//    String currentAddress;
+//    String permanentAddress;
+//
+//    @BeforeEach
+//    public void setup() {
+////       userName = getRandomString(10);
+//       userName = "Alex Black";
+//       userEmail = "alex@black.com";
+//       currentAddress = "first address 1";
+//       permanentAddress = "second address 2";
+//    }
 
     @Test
     void successfullFillFormTest() {
