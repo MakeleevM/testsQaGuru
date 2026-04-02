@@ -7,17 +7,18 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static testdata.TestData.*;
 
 public class PracticeFormTests extends BaseTest {
     @Test
     void registrationFormTest() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Antonio");
-        $("#lastName").setValue("Montana");
-        $("#userEmail").setValue("monta@na.na");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
 
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("4545667786");
+        $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1998");
         $(".react-datepicker__month-select").selectOption("December");
@@ -29,46 +30,48 @@ public class PracticeFormTests extends BaseTest {
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("picture.png");
-        $("#currentAddress").setValue("Russia/Moscow");
+        $("#currentAddress").setValue(currentAddress);
         $("#react-select-3-input").setValue("Haryana").pressEnter();
         $("#react-select-4-input").setValue("Karnal").pressEnter();
         $("#submit").click();
 
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-content").shouldHave(text("Antonio Montana"));
-        $(".modal-content").shouldHave(text("monta@na.na"));
+        $(".modal-content").shouldHave(text(firstName));
+        $(".modal-content").shouldHave(text(lastName));
+        $(".modal-content").shouldHave(text(userEmail));
         $(".modal-content").shouldHave(text("Male"));
-        $(".modal-content").shouldHave(text("4545667786"));
+        $(".modal-content").shouldHave(text(userNumber));
         $(".modal-content").shouldHave(text("Arts, Maths, Biology"));
         $(".modal-content").shouldHave(text("01 December,1998"));
         $(".modal-content").shouldHave(text("Music, Sports, Reading"));
         $(".modal-content").shouldHave(text("picture.png"));
-        $(".modal-content").shouldHave(text("Russia/Moscow"));
+        $(".modal-content").shouldHave(text(currentAddress));
         $(".modal-content").shouldHave(text("Haryana Karnal"));
     }
 
     @Test
     void requiredTestFields() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Max");
-        $("#lastName").setValue("Verstappen");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("1234567890");
+        $("#userNumber").setValue(userNumber);
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-content").shouldHave(text("Max Verstappen"));
+        $(".modal-content").shouldHave(text(firstName));
+        $(".modal-content").shouldHave(text(lastName));
         $(".modal-content").shouldHave(text("Male"));
-        $(".modal-content").shouldHave(text("1234567890"));
+        $(".modal-content").shouldHave(text(userNumber));
     }
 
     @Test
     void negativeNameTest() {
         open("/automation-practice-form");
-        $("#lastName").setValue("Verstappen");
-        $("#userNumber").setValue("1234567890");
-        $("#userEmail").setValue("monta@na.na");
+        $("#lastName").setValue(lastName);
+        $("#userNumber").setValue(userNumber);
+        $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText("Male")).click();
         $("#submit").click();
 
@@ -78,9 +81,9 @@ public class PracticeFormTests extends BaseTest {
     @Test
     void negativeLastNameTest() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Max");
-        $("#userNumber").setValue("1234567890");
-        $("#userEmail").setValue("monta@na.na");
+        $("#firstName").setValue(firstName);
+        $("#userNumber").setValue(userNumber);
+        $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText("Male")).click();
         $("#submit").click();
 
@@ -90,9 +93,9 @@ public class PracticeFormTests extends BaseTest {
     @Test
     void negativeEmailTest() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Max");
-        $("#lastName").setValue("Verstappen");
-        $("#userNumber").setValue("1234567890");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userNumber").setValue(userNumber);
         $("#userEmail").setValue("123");
         $("#genterWrapper").$(byText("Male")).click();
         $("#submit").click();
@@ -104,9 +107,9 @@ public class PracticeFormTests extends BaseTest {
     @Test
     void negativeGenderTest() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Max");
-        $("#lastName").setValue("Verstappen");
-        $("#userNumber").setValue("1234567890");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userNumber").setValue(userNumber);
         $("#submit").click();
 
         $("[id=gender-radio-1]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));

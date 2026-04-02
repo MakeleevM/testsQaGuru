@@ -1,11 +1,14 @@
 package testdata;
 
 public class TestData {
-    public static String userName = "Alex Black";
-    public static String userEmail = "alex@black.com";
-    public static String currentAddress = "first address 1";
-    public static String permanentAddress = "second address 2";
+    public static String userName = "Jack Black";
+    public static String userEmail = "email@test.com";
+    public static String currentAddress = "Russia/Moscow";
+    public static String permanentAddress = "Red Square";
 
+    public static String firstName = "Max";
+    public static String lastName = "Mad";
+    public static String userNumber = "0987654321";
 
 //    public static String
 //            userName = "Alex Black",
