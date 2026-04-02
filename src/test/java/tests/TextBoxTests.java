@@ -8,14 +8,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests extends BaseTest {
 
+    String userName = "Alex Black";
+    String userEmail = "alex@black.com";
+    String currentAddress = "first address 1";
+    String permanentAddress = "second address 2";
+
     @Test
     void successfullFillFormTest() {
-
-        String userName = "Alex Black";
-        String userEmail = "alex@black.com";
-        String currentAddress = "first address 1";
-        String permanentAddress = "second address 2";
-
         open("/text-box");
         $("#userName").setValue(userName);
         $("#userEmail").setValue(userEmail);
@@ -31,12 +30,6 @@ public class TextBoxTests extends BaseTest {
 
     @Test
     void successfullFillFormWithoutAddressTest() {
-
-        String userName = "Alex Black";
-        String userEmail = "alex@black.com";
-        String currentAddress = "first address 1";
-        String permanentAddress = "second address 2";
-
         open("/text-box");
         $("#userName").setValue(userName);
         $("#userEmail").setValue(userEmail);
@@ -57,12 +50,6 @@ public class TextBoxTests extends BaseTest {
 
     @Test
     void miniFieldTest() {
-
-        String userName = "Alex Black";
-        String userEmail = "alex@black.com";
-        String currentAddress = "first address 1";
-        String permanentAddress = "second address 2";
-
         open("/text-box");
         $("#userName").setValue(userName);
         $("#submit").click();
