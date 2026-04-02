@@ -24,7 +24,6 @@ public class TestData {
     public static String city = "Karnal";
 
 
-
 //    public static String
 //            userName = "Alex Black",
 //            userEmail = "alex@black.com",
