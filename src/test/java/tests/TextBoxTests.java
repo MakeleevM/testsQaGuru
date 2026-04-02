@@ -6,10 +6,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TextBoxTests extends BaseTest{
+public class TextBoxTests extends BaseTest {
 
     @Test
-    void  successfullFillFormTest() {
+    void successfullFillFormTest() {
         open("/text-box");
         $("#userName").setValue("Alex Black");
         $("#userEmail").setValue("alex@black.com");

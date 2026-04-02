@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
     @BeforeAll
-    static void beforeAll() {
+    static void setupSelenideConfig() {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "146.0";
         Configuration.browserSize = "1920x1080";
@@ -16,7 +16,7 @@ public class BaseTest {
     }
 
     @AfterEach
-    void afterEach() {
+    void closeDriver() {
         closeWebDriver();
     }
 }
