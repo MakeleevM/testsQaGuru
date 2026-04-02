@@ -9,6 +9,21 @@ public class TestData {
     public static String firstName = "Max";
     public static String lastName = "Mad";
     public static String userNumber = "0987654321";
+    public static String genterWrapper = "Male";
+    public static String yearOfBirth = "1998";
+    public static String monthOfBirth = "December";
+    public static String dayOfBirth = "1";
+    public static String subjectBiology = "Biology";
+    public static String subjectArts = "Arts";
+    public static String subjectMath = "Math";
+    public static String hobbieSports = "Sports";
+    public static String hobbieReading = "Reading";
+    public static String hobbieMusic = "Music";
+    public static String nameOfFile = "picture.png";
+    public static String country = "Haryana";
+    public static String city = "Karnal";
+
+
 
 //    public static String
 //            userName = "Alex Black",

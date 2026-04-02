@@ -8,20 +8,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static testdata.TestData.*;
 
 public class TextBoxTests extends BaseTest {
-//
-//    String userName;
-//    String userEmail;
-//    String currentAddress;
-//    String permanentAddress;
-//
-//    @BeforeEach
-//    public void setup() {
-////       userName = getRandomString(10);
-//       userName = "Alex Black";
-//       userEmail = "alex@black.com";
-//       currentAddress = "first address 1";
-//       permanentAddress = "second address 2";
-//    }
 
     @Test
     void successfullFillFormTest() {
