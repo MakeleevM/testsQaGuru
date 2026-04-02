@@ -11,32 +11,32 @@ public class TextBoxTests extends BaseTest{
     @Test
     void  successfullFillFormTest() {
         open("/text-box");
-        $("[id=userName]").setValue("Alex Black");
-        $("[id=userEmail]").setValue("alex@black.com");
-        $("[id=currentAddress]").setValue("first address 1");
-        $("[id=permanentAddress]").setValue("second address 2");
-        $("[id=submit]").click();
+        $("#userName").setValue("Alex Black");
+        $("#userEmail").setValue("alex@black.com");
+        $("#currentAddress").setValue("first address 1");
+        $("#permanentAddress").setValue("second address 2");
+        $("#submit").click();
 
-        $("[id=output] [id=name]").shouldHave(text("Alex Black"));
-        $("[id=output] [id=email]").shouldHave(text("alex@black.com"));
-        $("[id=output] [id=currentAddress]").shouldHave(text("first address 1"));
-        $("[id=output] [id=permanentAddress]").shouldHave(text("second address 2"));
+        $("#output #name").shouldHave(text("Alex Black"));
+        $("#output #email").shouldHave(text("alex@black.com"));
+        $("#output #currentAddress").shouldHave(text("first address 1"));
+        $("#output #permanentAddress").shouldHave(text("second address 2"));
     }
 
     @Test
     void negativeFillFormTest() {
         open("/text-box");
-        $("[id=userEmail]").setValue("123");
-        $("[id=submit]").click();
+        $("#userEmail").setValue("123");
+        $("#submit").click();
         $(".field-error").shouldHave(visible);
     }
 
     @Test
     void miniFieldTest() {
         open("/text-box");
-        $("[id=userName]").setValue("Aaron");
-        $("[id=submit]").click();
+        $("#userName").setValue("Aaron");
+        $("#submit").click();
 
-        $("[id=output] [id=name]").shouldHave(text("Aaron"));
+        $("#output #name").shouldHave(text("Aaron"));
     }
 }
