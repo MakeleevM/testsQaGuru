@@ -10,18 +10,42 @@ public class TextBoxTests extends BaseTest {
 
     @Test
     void successfullFillFormTest() {
+
+        String userName = "Alex Black";
+        String userEmail = "alex@black.com";
+        String currentAddress = "first address 1";
+        String permanentAddress = "second address 2";
+
         open("/text-box");
-        $("#userName").setValue("Alex Black");
-        $("#userEmail").setValue("alex@black.com");
-        $("#currentAddress").setValue("first address 1");
-        $("#permanentAddress").setValue("second address 2");
+        $("#userName").setValue(userName);
+        $("#userEmail").setValue(userEmail);
+        $("#currentAddress").setValue(currentAddress);
+        $("#permanentAddress").setValue(permanentAddress);
         $("#submit").click();
 
-        $("#output #name").shouldHave(text("Alex Black"));
-        $("#output #email").shouldHave(text("alex@black.com"));
-        $("#output #currentAddress").shouldHave(text("first address 1"));
-        $("#output #permanentAddress").shouldHave(text("second address 2"));
+        $("#output #name").shouldHave(text(userName));
+        $("#output #email").shouldHave(text(userEmail));
+        $("#output #currentAddress").shouldHave(text(currentAddress));
+        $("#output #permanentAddress").shouldHave(text(permanentAddress));
     }
+
+    @Test
+    void successfullFillFormWithoutAddressTest() {
+
+        String userName = "Alex Black";
+        String userEmail = "alex@black.com";
+        String currentAddress = "first address 1";
+        String permanentAddress = "second address 2";
+
+        open("/text-box");
+        $("#userName").setValue(userName);
+        $("#userEmail").setValue(userEmail);
+        $("#submit").click();
+
+        $("#output #name").shouldHave(text(userName));
+        $("#output #email").shouldHave(text(userEmail));
+    }
+
 
     @Test
     void negativeFillFormTest() {
@@ -33,10 +57,16 @@ public class TextBoxTests extends BaseTest {
 
     @Test
     void miniFieldTest() {
+
+        String userName = "Alex Black";
+        String userEmail = "alex@black.com";
+        String currentAddress = "first address 1";
+        String permanentAddress = "second address 2";
+
         open("/text-box");
-        $("#userName").setValue("Aaron");
+        $("#userName").setValue(userName);
         $("#submit").click();
 
-        $("#output #name").shouldHave(text("Aaron"));
+        $("#output #name").shouldHave(text(userName));
     }
 }
