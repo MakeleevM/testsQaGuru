@@ -12,16 +12,18 @@ public class TestData {
     public static String genterWrapper = "Male";
     public static String yearOfBirth = "1998";
     public static String monthOfBirth = "December";
-    public static String dayOfBirth = "1";
+    public static String dayOfBirth = "27";
     public static String subjectBiology = "Biology";
     public static String subjectArts = "Arts";
-    public static String subjectMath = "Math";
+    public static String subjectMath = "Maths";
     public static String hobbieSports = "Sports";
     public static String hobbieReading = "Reading";
     public static String hobbieMusic = "Music";
     public static String nameOfFile = "picture.png";
     public static String country = "Haryana";
     public static String city = "Karnal";
+    public static String dateOfBirth = "27 December,1998";
+    public static String messageAfterSubmitting = "Thanks for submitting the form";
 
 
 //    public static String

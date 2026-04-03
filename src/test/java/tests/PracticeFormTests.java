@@ -1,7 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,13 +16,12 @@ public class PracticeFormTests extends BaseTest {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-
         $("#genterWrapper").$(byText(genterWrapper)).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption(yearOfBirth);
         $(".react-datepicker__month-select").selectOption(monthOfBirth);
-        $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
+        $(".react-datepicker__day--0" + dayOfBirth + ":not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue(subjectArts).pressEnter();
         $("#subjectsInput").setValue(subjectMath).pressEnter();
         $("#subjectsInput").setValue(subjectBiology).pressEnter();
@@ -35,26 +34,17 @@ public class PracticeFormTests extends BaseTest {
         $("#react-select-4-input").setValue(city).pressEnter();
         $("#submit").click();
 
-
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-content").shouldHave(text(firstName));
-        $(".modal-content").shouldHave(text(lastName));
-        $(".modal-content").shouldHave(text(userEmail));
-        $(".modal-content").shouldHave(text(genterWrapper));
-        $(".modal-content").shouldHave(text(userNumber));
-        $(".modal-content").shouldHave(text(subjectArts));
-        $(".modal-content").shouldHave(text(subjectMath));
-        $(".modal-content").shouldHave(text(subjectBiology));
-        $(".modal-content").shouldHave(text(dayOfBirth));
-        $(".modal-content").shouldHave(text(monthOfBirth));
-        $(".modal-content").shouldHave(text(yearOfBirth));
-        $(".modal-content").shouldHave(text(hobbieMusic));
-        $(".modal-content").shouldHave(text(hobbieReading));
-        $(".modal-content").shouldHave(text(hobbieSports));
-        $(".modal-content").shouldHave(text(nameOfFile));
-        $(".modal-content").shouldHave(text(currentAddress));
-        $(".modal-content").shouldHave(text(country));
-        $(".modal-content").shouldHave(text(city));
+        $("#example-modal-sizes-title-lg").shouldHave(Condition.exactText(messageAfterSubmitting));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(genterWrapper));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(dateOfBirth));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subjectArts + ", " + subjectMath + ", " + subjectBiology));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(hobbieMusic + ", " + hobbieSports + ", " + hobbieReading));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(nameOfFile));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(country + " " + city));
     }
 
     @Test
