@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
@@ -11,13 +12,27 @@ import static com.codeborne.selenide.Selenide.open;
 import static testdata.TestData.*;
 
 public class PracticeFormTests extends BaseTest {
+
+    RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     void registrationFormTest() {
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
+//        open("/automation-practice-form");
+
+        registrationPage.openPage();
+
+//        $("#firstName").setValue(firstName);
+        registrationPage.setFirstName(firstName);
+
+//        $("#lastName").setValue(lastName);
+        registrationPage.setLastName(lastName);
+
+//        $("#userEmail").setValue(userEmail);
+        registrationPage.setEmail(userEmail);
+
         $("#genterWrapper").$(byText(genterWrapper)).click();
+        registrationPage.setGender(genterWrapper);
+
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption(yearOfBirth);
@@ -29,7 +44,7 @@ public class PracticeFormTests extends BaseTest {
         $("#hobbiesWrapper").$(byText(hobbieMusic)).click();
         $("#hobbiesWrapper").$(byText(hobbieSports)).click();
         $("#hobbiesWrapper").$(byText(hobbieReading)).click();
-        $("#uploadPicture").uploadFromClasspath(nameOfFile);
+        $("#uploadPicture").uploadFromClasspath("img/" + nameOfFile);
         $("#currentAddress").setValue(currentAddress);
         $("#react-select-3-input").setValue(country).pressEnter();
         $("#react-select-4-input").setValue(city).pressEnter();
