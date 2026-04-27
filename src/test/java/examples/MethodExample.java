@@ -15,9 +15,6 @@ public class MethodExample {
         assertEquals(expectedSum, actualSum);
     }
 
-//    void sum(int first, int second) {
-//        int sum = first + second;
-//    }
 
     int sum(int first, int second) {
         int sum = first + second;

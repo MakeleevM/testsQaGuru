@@ -3,6 +3,7 @@ package testdata;
 public class TestData {
     public static String userName = "Jack Black";
     public static String userEmail = "email@test.com";
+    public static String userEmailBad = "123@.com";
     public static String currentAddress = "Russia/Moscow";
     public static String permanentAddress = "Red Square";
 
@@ -20,15 +21,9 @@ public class TestData {
     public static String hobbieReading = "Reading";
     public static String hobbieMusic = "Music";
     public static String nameOfFile = "picture.png";
-    public static String country = "Haryana";
+    public static String state = "Haryana";
     public static String city = "Karnal";
-    public static String dateOfBirth = "27 December,1998";
+    public static String dateOfBirth = "1998-12-27";
     public static String messageAfterSubmitting = "Thanks for submitting the form";
-
-
-//    public static String
-//            userName = "Alex Black",
-//            userEmail = "alex@black.com",
-//            currentAddress = "first address 1",
-//            permanentAddress = "second address 2";
+    public static String messagePracticeForm = "Student Registration Form";
 }

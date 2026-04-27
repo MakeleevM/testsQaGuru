@@ -3,10 +3,6 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static testdata.TestData.*;
 
 public class TextBoxTests extends BaseTest {
@@ -49,19 +45,17 @@ public class TextBoxTests extends BaseTest {
 
     @Test
     void negativeFillFormTest() {
-        open("/text-box");
-        $("#userEmail").setValue("123");
-        $("#submit").click();
-
-        $(".field-error").shouldHave(visible);
+        textBoxPage.openPage()
+                .typeUserEmail(userEmailBad)
+                .submitButton()
+                .checkFieldError();
     }
 
     @Test
     void miniFieldTest() {
-        open("/text-box");
-        $("#userName").setValue(userName);
-        $("#submit").click();
-
-        $("#output #name").shouldHave(text(userName));
+        textBoxPage.openPage()
+                .typeUserName(userName)
+                .submitButton()
+                .checkField("name", userName);
     }
 }

@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -16,53 +15,133 @@ public class PracticeFormTests extends BaseTest {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void registrationFormTest() {
-//        open("/automation-practice-form");
-
-        registrationPage.openPage();
-
-//        $("#firstName").setValue(firstName);
-        registrationPage.setFirstName(firstName);
-
-//        $("#lastName").setValue(lastName);
-        registrationPage.setLastName(lastName);
-
-//        $("#userEmail").setValue(userEmail);
-        registrationPage.setEmail(userEmail);
-
-        $("#genterWrapper").$(byText(genterWrapper)).click();
-        registrationPage.setGender(genterWrapper);
-
-        $("#userNumber").setValue(userNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOption(yearOfBirth);
-        $(".react-datepicker__month-select").selectOption(monthOfBirth);
-        $(".react-datepicker__day--0" + dayOfBirth + ":not(.react-datepicker__day--outside-month)").click();
-        $("#subjectsInput").setValue(subjectArts).pressEnter();
-        $("#subjectsInput").setValue(subjectMath).pressEnter();
-        $("#subjectsInput").setValue(subjectBiology).pressEnter();
-        $("#hobbiesWrapper").$(byText(hobbieMusic)).click();
-        $("#hobbiesWrapper").$(byText(hobbieSports)).click();
-        $("#hobbiesWrapper").$(byText(hobbieReading)).click();
-        $("#uploadPicture").uploadFromClasspath("img/" + nameOfFile);
-        $("#currentAddress").setValue(currentAddress);
-        $("#react-select-3-input").setValue(country).pressEnter();
-        $("#react-select-4-input").setValue(city).pressEnter();
-        $("#submit").click();
-
-        $("#example-modal-sizes-title-lg").shouldHave(Condition.exactText(messageAfterSubmitting));
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(genterWrapper));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(dateOfBirth));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subjectArts + ", " + subjectMath + ", " + subjectBiology));
-        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(hobbieMusic + ", " + hobbieSports + ", " + hobbieReading));
-        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(nameOfFile));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
-        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(country + " " + city));
+    void registrationFormTestd() {
+        registrationPage.openPage()
+                .practiceForm(messagePracticeForm)
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeUserEmail(userEmail)
+                .setGender(genterWrapper)
+                .typeUserNumber(userNumber)
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                .setSubjects(subjectArts)
+                .setSubjects(subjectMath)
+                .setSubjects(subjectBiology)
+                .setHobbiesWrapper(hobbieMusic)
+                .setHobbiesWrapper(hobbieSports)
+                .setHobbiesWrapper(hobbieReading)
+                .setUploadPicture()
+                .setCurrentAddress(currentAddress)
+                .setStateAndCity(state, city)
+                .submitButton()
+                .setModalWindow(messageAfterSubmitting)
+                .checkFieldResult("Student Name", firstName + " " + lastName)
+                .checkFieldResult("Student Email", userEmail)
+                .checkFieldResult("Gender", genterWrapper)
+                .checkFieldResult("Mobile", userNumber)
+                .checkFieldResult("Date of Birth", dateOfBirth)
+                .checkFieldResult("Subjects", subjectArts + ", " + subjectMath + ", " + subjectBiology)
+                .checkFieldResult("Hobbies", hobbieSports + ", " + hobbieReading+ ", " + hobbieMusic)
+                .checkFieldResult("Picture", nameOfFile)
+                .checkFieldResult("Address", currentAddress)
+                .checkFieldResult("State and City", state + " " + city);
     }
 
+
+    @Test
+    void registrationFormTest() {
+        registrationPage.openPage()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeUserEmail(userEmail)
+                .setGender(genterWrapper)
+                .typeUserNumber(userNumber)
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                .setSubjects(subjectArts)
+                .setSubjects(subjectMath)
+                .setSubjects(subjectBiology);
+
+//        $("#firstName").setValue(firstName);
+//        $("#lastName").setValue(lastName);
+//        $("#userEmail").setValue(userEmail);
+//        $("#genterWrapper").$(byText(genterWrapper)).click();
+//        $("#userNumber").setValue(userNumber);
+//        $("#dateOfBirthInput").click();
+//        $(".react-datepicker__year-select").selectOption(yearOfBirth);
+//        $(".react-datepicker__month-select").selectOption(monthOfBirth);
+//        $(".react-datepicker__day--0" + dayOfBirth + ":not(.react-datepicker__day--outside-month)").click();
+//        $("#subjectsInput").setValue(subjectArts).pressEnter();
+//        $("#subjectsInput").setValue(subjectMath).pressEnter();
+//        $("#subjectsInput").setValue(subjectBiology).pressEnter();
+//        $("#hobbiesWrapper").$(byText(hobbieMusic)).click();
+//        $("#hobbiesWrapper").$(byText(hobbieSports)).click();
+//        $("#hobbiesWrapper").$(byText(hobbieReading)).click();
+//        $("#uploadPicture").uploadFromClasspath("img/" + nameOfFile);
+//        $("#currentAddress").setValue(currentAddress);
+//        $("#react-select-3-input").setValue(country).pressEnter();
+//        $("#react-select-4-input").setValue(city).pressEnter();
+//        $("#submit").click();
+//        $("#example-modal-sizes-title-lg").shouldHave(Condition.exactText(messageAfterSubmitting));
+//        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+//        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
+//        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(genterWrapper));
+//        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+//        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(dateOfBirth));
+//        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subjectArts + ", " + subjectMath + ", " + subjectBiology));
+//        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(hobbieMusic + ", " + hobbieSports + ", " + hobbieReading));
+//        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(nameOfFile));
+//        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
+//        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(state + " " + city));
+    }
+
+//    @Test
+//    void registrationFormTest_old() {
+////        open("/automation-practice-form");
+//
+//        registrationPage.openPage();
+
+    /// /
+    /// ///        $("#firstName").setValue(firstName);
+    /// /        registrationPage.setFirstName(firstName);
+    /// /
+    /// ///        $("#lastName").setValue(lastName);
+    /// /        registrationPage.setLastName(lastName);
+    /// /
+    /// ///        $("#userEmail").setValue(userEmail);
+    /// /        registrationPage.setEmail(userEmail);
+//
+//        $("#genterWrapper").$(byText(genterWrapper)).click();
+//        registrationPage.setGender(genterWrapper);
+//
+//        $("#userNumber").setValue(userNumber);
+//        $("#dateOfBirthInput").click();
+//        $(".react-datepicker__year-select").selectOption(yearOfBirth);
+//        $(".react-datepicker__month-select").selectOption(monthOfBirth);
+//        $(".react-datepicker__day--0" + dayOfBirth + ":not(.react-datepicker__day--outside-month)").click();
+//        $("#subjectsInput").setValue(subjectArts).pressEnter();
+//        $("#subjectsInput").setValue(subjectMath).pressEnter();
+//        $("#subjectsInput").setValue(subjectBiology).pressEnter();
+//        $("#hobbiesWrapper").$(byText(hobbieMusic)).click();
+//        $("#hobbiesWrapper").$(byText(hobbieSports)).click();
+//        $("#hobbiesWrapper").$(byText(hobbieReading)).click();
+//        $("#uploadPicture").uploadFromClasspath("img/" + nameOfFile);
+//        $("#currentAddress").setValue(currentAddress);
+//        $("#react-select-3-input").setValue(country).pressEnter();
+//        $("#react-select-4-input").setValue(city).pressEnter();
+//        $("#submit").click();
+//
+//        $("#example-modal-sizes-title-lg").shouldHave(Condition.exactText(messageAfterSubmitting));
+//        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+//        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
+//        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(genterWrapper));
+//        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+//        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(dateOfBirth));
+//        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subjectArts + ", " + subjectMath + ", " + subjectBiology));
+//        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(hobbieMusic + ", " + hobbieSports + ", " + hobbieReading));
+//        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(nameOfFile));
+//        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
+//        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(country + " " + city));
+//    }
     @Test
     void requiredTestFields() {
         open("/automation-practice-form");

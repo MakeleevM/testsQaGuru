@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -15,10 +15,11 @@ public class TextBoxPage {
     private SelenideElement outputResults = $("#output");
     private SelenideElement currentAddressInput = $("#currentAddress");
     private SelenideElement permanentAddressInput = $("#permanentAddress");
+    private SelenideElement errorField = $("#output");
 
     // Actions
     public TextBoxPage openPage() {
-        open("/text-box");
+        open("/one-page-form/text-box.html");
 
         return this;
     }
@@ -55,6 +56,12 @@ public class TextBoxPage {
 
     public TextBoxPage checkField(String key, String value) {
         outputResults.$(byId(key)).shouldHave(text(value));
+
+        return this;
+    }
+
+    public TextBoxPage checkFieldError() {
+        errorField.shouldHave(not(visible));
 
         return this;
     }
