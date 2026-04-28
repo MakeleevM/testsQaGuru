@@ -3,9 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static testdata.TestData.nameOfFile;
@@ -31,6 +29,7 @@ public class RegistrationPage {
     private SelenideElement modalDialog = $(".modal-dialog");
     private SelenideElement modalMessage = $("#example-modal-sizes-title-lg");
     private SelenideElement outputResults = $(".table-responsive");
+    private SelenideElement errorResult = $("#formError");
 
     public RegistrationPage openPage() {
         open("/one-page-form/automation-practice-form.html");
@@ -143,6 +142,12 @@ public class RegistrationPage {
 
     public RegistrationPage checkFieldResult(String key, String value) {
         outputResults.shouldHave(text(key)).shouldHave(text(value));
+
+        return this;
+    }
+
+    public RegistrationPage checkFieldResultError() {
+        errorResult.shouldHave(visible);
 
         return this;
     }

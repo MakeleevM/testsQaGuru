@@ -1,12 +1,10 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.TextBoxPage;
 
 import static testdata.TestData.*;
 
 public class TextBoxTests extends BaseTest {
-    TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
     void successfullFillFormTest() {

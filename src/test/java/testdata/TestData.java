@@ -6,7 +6,6 @@ public class TestData {
     public static String userEmailBad = "123@.com";
     public static String currentAddress = "Russia/Moscow";
     public static String permanentAddress = "Red Square";
-
     public static String firstName = "Max";
     public static String lastName = "Mad";
     public static String userNumber = "0987654321";
