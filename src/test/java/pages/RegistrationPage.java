@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultTableComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,29 +11,34 @@ import static testdata.TestData.nameOfFile;
 
 public class RegistrationPage {
 
-    CalendarComponent calendar = new CalendarComponent();
+    private final CalendarComponent calendar = new CalendarComponent();
+    private final ResultTableComponent resultTableComponent = new ResultTableComponent();
 
-    private SelenideElement firstNameInput = $("#firstName");
-    private SelenideElement lastNameInput = $("#lastName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement genderContainer = $("#genterWrapper");
-    private SelenideElement userNumberInput = $("#userNumber");
-    private SelenideElement subjectsInput = $("#subjectsInput");
-    private SelenideElement hobbiesWrapperInput = $("#hobbiesWrapper");
-    private SelenideElement uploadPictureInput = $("#uploadPicture");
-    private SelenideElement currentAddressInput = $("#currentAddress");
-    private SelenideElement stateSelect = $("#state");
-    private SelenideElement citySelect = $("#city");
-    private SelenideElement stateCityContainer = $("#stateCity-wrapper");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement practiceFormWrapper = $(".practice-form-wrapper");
-    private SelenideElement modalDialog = $(".modal-dialog");
-    private SelenideElement modalMessage = $("#example-modal-sizes-title-lg");
-    private SelenideElement outputResults = $(".table-responsive");
-    private SelenideElement errorResult = $("#formError");
+    private final SelenideElement firstNameInput = $("#firstName");
+    private final SelenideElement lastNameInput = $("#lastName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement genderContainer = $("#genterWrapper");
+    private final SelenideElement userNumberInput = $("#userNumber");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement hobbiesWrapperInput = $("#hobbiesWrapper");
+    private final SelenideElement uploadPictureInput = $("#uploadPicture");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement stateSelect = $("#state");
+    private final SelenideElement citySelect = $("#city");
+    private final SelenideElement stateCityContainer = $("#stateCity-wrapper");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement practiceFormWrapper = $(".practice-form-wrapper");
+    private final SelenideElement modalDialog = $(".modal-dialog");
+    private final SelenideElement modalMessage = $("#example-modal-sizes-title-lg");
+    private final SelenideElement errorResult = $("#formError");
 
     public RegistrationPage openPage() {
         open("/one-page-form/automation-practice-form.html");
+
+        return this;
+    }
+
+    public RegistrationPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -140,15 +146,14 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkFieldResult(String key, String value) {
-        outputResults.shouldHave(text(key)).shouldHave(text(value));
+    public RegistrationPage checkFieldResultError() {
+        errorResult.shouldHave(visible);
 
         return this;
     }
 
-    public RegistrationPage checkFieldResultError() {
-        errorResult.shouldHave(visible);
-
+    public RegistrationPage checkResult(String key, String value) {
+        resultTableComponent.checkResult(key, value);
         return this;
     }
 }
