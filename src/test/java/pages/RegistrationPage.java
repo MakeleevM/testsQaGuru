@@ -7,7 +7,7 @@ import pages.components.ResultTableComponent;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static testdata.TestData.nameOfFile;
+
 
 public class RegistrationPage {
 
@@ -100,9 +100,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setUploadPicture() {
-        uploadPictureInput.uploadFromClasspath("img/" + nameOfFile);
-
+    public RegistrationPage setUploadPicture(String uploadfile) {
+        uploadPictureInput.uploadFromClasspath("img/" + uploadfile);
         return this;
     }
 
@@ -154,6 +153,7 @@ public class RegistrationPage {
 
     public RegistrationPage checkResult(String key, String value) {
         resultTableComponent.checkResult(key, value);
+
         return this;
     }
 }

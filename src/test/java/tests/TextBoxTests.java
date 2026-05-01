@@ -1,50 +1,53 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-
-import static testdata.TestData.*;
+import pages.TextBoxPage;
+import testdata.TestData;
 
 public class TextBoxTests extends BaseTest {
+
+    TextBoxPage textBoxPage = new TextBoxPage();
+    TestData testData = new TestData();
 
     @Test
     void successfullFillFormTest() {
         textBoxPage.openPage()
-                .typeUserName(userName)
-                .typeUserEmail(userEmail)
-                .typeCurrentAddress(currentAddress)
-                .typePermanentAddress(permanentAddress)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
+                .typeCurrentAddress(testData.currentAddress)
+                .typePermanentAddress(testData.permanentAddress)
                 .submitButton()
-                .checkField("name", userName)
-                .checkField("email", userEmail)
-                .checkField("currentAddress", currentAddress)
-                .checkField("permanentAddress", permanentAddress);
+                .checkField("name", testData.userName)
+                .checkField("email", testData.userEmail)
+                .checkField("currentAddress", testData.currentAddress)
+                .checkField("permanentAddress", testData.permanentAddress);
 
     }
 
     @Test
     void successfullFillFormWithoutAddressTest() {
         textBoxPage.openPage()
-                .typeUserName(userName)
-                .typeUserEmail(userEmail)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
                 .submitButton()
-                .checkField("name", userName)
-                .checkField("email", userEmail);
+                .checkField("name", testData.userName)
+                .checkField("email", testData.userEmail);
     }
 
     @Test
     void successfullFillFormWithoutAddressTest_chaining() {
         textBoxPage.openPage()
-                .typeUserName(userName)
-                .typeUserEmail(userEmail)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
                 .submitButton()
-                .checkField("name", userName)
-                .checkField("email", userEmail);
+                .checkField("name", testData.userName)
+                .checkField("email", testData.userEmail);
     }
 
     @Test
     void negativeFillFormTest() {
         textBoxPage.openPage()
-                .typeUserEmail(userEmailBad)
+                .typeUserEmail(testData.wrongEmail)
                 .submitButton()
                 .checkFieldError();
     }
@@ -52,8 +55,8 @@ public class TextBoxTests extends BaseTest {
     @Test
     void miniFieldTest() {
         textBoxPage.openPage()
-                .typeUserName(userName)
+                .typeUserName(testData.userName)
                 .submitButton()
-                .checkField("name", userName);
+                .checkField("name", testData.userName);
     }
 }
