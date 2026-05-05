@@ -19,6 +19,7 @@ public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://qa-guru.github.io";
+        Configuration.holdBrowserOpen = true;
     }
 
     @BeforeEach

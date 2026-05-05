@@ -16,7 +16,6 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation(
             "com.codeborne:selenide:7.15.0",
-            // "org.seleniumhq.selenium:selenium-java:4.27.0",
             "org.junit.jupiter:junit-jupiter:5.14.2",
             "com.github.javafaker:javafaker:1.0.2",
             "org.junit.jupiter:junit-jupiter")
