@@ -1,3 +1,7 @@
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$;
+
 public class CalendarComponent {
 
     private final SelenideElement yearSelect = $(".react-datepicker__year-select");
